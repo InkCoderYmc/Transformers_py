@@ -1,1 +1,3 @@
 # Transformers_py
+
+这是一个基于pytorch实现的transformers结构的代码,旨在熟悉transformers的结构
