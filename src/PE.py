@@ -8,6 +8,12 @@ class PositionalEncoding(nn.Module):
     PE(pos,2_i+1)=cos(pos/10000^(2i/d_model))
     """
     def __init__(self, d_model: int, dropout=0.1, max_len=5000):
+        """
+        Args:
+            d_model (int): 输入维度
+            dropout (float, optional): drop率. Defaults to 0.1.
+            max_len (int, optional): embedding向量长度. Defaults to 5000.
+        """
         super(PositionalEncoding).__init__()
         self.dropout = nn.Dropout(p=dropout)
         # 初始化位置编码矩阵
@@ -28,6 +34,12 @@ class PositionalEncoding(nn.Module):
         self.register_buffer('positional_encoding', positional_encoding)
 
     def forward(self, x):
-        # x: [batch_size, seq_len, d_model]
+        """
+        Args:
+            x (_type_): 输入数据，[batch_size, seq_len, d_model]
+        Returns:
+            output (_type_): 输出数据，[batch_size, seq_len, d_model]
+        """
         x = x + self.positional_encoding[:x.size(0), :]
-        return self.dropout(x)
+        output = self.dropout(x)
+        return output
