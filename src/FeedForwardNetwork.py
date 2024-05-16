@@ -1,17 +1,17 @@
 import torch
 from torch import nn
 
-class FeedForwardLayer(nn.Module):
+class FeedForwardNetwork(nn.Module):
     # 根据论文中解释，本质为两层的MLP
     # FFN(x) = ReLU(xW1^T+b1)W2+b2
-    def __init__(self, d_model: int, d_ff: int, dropout=0.1):
+    def __init__(self, d_model=512, d_ff=2048, dropout=0.1):
         """
         Args:
             d_model (int): FFN的输入维度
             d_ff (int): FFN的隐藏层维度
             dropout (float, optional): drop率. Defaults to 0.1.
         """
-        super(FeedForwardLayer, self).__init__()
+        super(FeedForwardNetwork, self).__init__()
         # Linear实现了xW1^T+b1
         self.w_1 = nn.Linear(d_model, d_ff)
         self.w_2 = nn.Linear(d_ff, d_model)

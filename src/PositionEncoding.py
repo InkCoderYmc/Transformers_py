@@ -7,7 +7,7 @@ class PositionalEncoding(nn.Module):
     PE(pos,2_i)=sin(pos/10000^(2i/d_model))
     PE(pos,2_i+1)=cos(pos/10000^(2i/d_model))
     """
-    def __init__(self, d_model: int, dropout=0.1, max_len=5000):
+    def __init__(self, d_model=512, dropout=0.1, max_len=5000):
         """
         Args:
             d_model (int): 输入维度
